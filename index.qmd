@@ -2,24 +2,40 @@
 title: "DOA-journal-occupational"
 ---
 
+## Description
+
 This is a project proposal for a diamond open access (DOA) journal in occupational health, with a focus on the publication of research and educational content, as well as experiences from young researchers in the field. As an academic and community-led journal, content will be published online-only, at no cost to authors and readers, whilst allowing authors to retain copyright of their work.
 
 To learn more about the diamond open access (DOA) publication model, please refer to <https://www.coalition-s.org/diamond-open-access/>.
 
-## 
+## Aims
+
+*Journal Title (TBD)* aims to be a forum for researchers in occupational health, occupational exposure science, and occupational epidemiology, with representation of researchers from all over the world, including low to middle-income countries, early-career researchers, practitioners, and stakeholders. To make this possible, we work with a diamond open access publication model, making content available to the research community at no cost to researchers nor readers. The journal embraces open science practices, so we operate with (optional) open peer-review. Data and code can be submitted as independent research outputs and we embrace their availability accompanying research papers published in the journal. We welcome submissions from all fronts aiming to improve occupational health to build links between academic and non-academic contexts of practice.
+
+## Scope
+
+Novel topics within the field (just to mention how novelty can be addressed with examples)
+
+-   Occupational exposome – the ‘Worksome’; occupation-course epidemiology (instead of life-course epidemiology)
+
+-   Geospatial analysis in occupational epidemiology (ex. air pollutants, surface temperature, built-up environment, etc.)
+
+-   Climate change and workers (ex. methodological needs?)/ Occupational global health/ and occupational infectious diseases in non-healthcare workers
 
 ## Types of content
 
+Submissions for all the different stages in the research processes sand practice will be published in the journal. This means that authors can submit protocols, commentaries, tutorials, datasets, softwares, among others.
+
 The journal will publish the following types of content:
 
-1. **Research articles**: Original research articles that present new findings in the field of occupational health. These articles will be peer-reviewed by experts in the field.
-2. **Review articles**: Comprehensive reviews of current topics in occupational health, including systematic reviews and meta-analyses.
-3. **Narrative reviews**: Articles that provide a narrative overview of a specific topic in occupational health, without the need for a systematic review.
-4. **Protocols**: Detailed descriptions of research protocols for studies in occupational health.
-5. **Tutorials**: Articles that provide step-by-step instructions on how to perform specific techniques and/or analyses, with emphasis in open science practices.
-6. **Dataset**: Description of a dataset with the potential to be reused by other practitioners and researchers in the occupational health field.
-7. **Software**: Description of software tools or applications that can be used by practitioners and researchers in the occupational health field.
-8. **Commentaries**: Opinion pieces or perspectives on current issues in occupational health.
-9. **Case studies**: Reports of unique cases or experiences in the field of occupational health.
-10. **Editorial**: Editorial content from the journal's editorial board, including updates on the journal's policies and practices.
-
+1.  **Research articles**: Original research articles that present new findings in the field of occupational health. These articles will be peer-reviewed by experts in the field.
+2.  **Review articles**: Comprehensive reviews of current topics in occupational health, including systematic reviews and meta-analyses.
+3.  **Narrative reviews**: Articles that provide a narrative overview of a specific topic in occupational health, without the need for a systematic review.
+4.  **Protocols**: Detailed descriptions of research protocols for scientific studies in occupational health, protocols that improve practice within industry, or public health recommendations.
+5.  **Methods**: Articles that study or describe research methods or applications in practice.
+6.  **Computational Tutorials**: Step-by-step instructions on how to perform specific techniques and/or analyses, with emphasis in open science practices.
+7.  **Dataset**: Description of a dataset with the potential to be reused by other practitioners and researchers in the occupational health field.
+8.  **Software**: Description of software tools or applications that can be used by practitioners and researchers in the occupational health field.
+9.  **Commentaries**: Opinion pieces or perspectives on current issues in occupational health.
+10. **Case studies**: Reports of unique cases or experiences in the field of occupational health.
+11. **Editorial**: Editorial content from the journal's editorial board, including updates on the journal's policies and practices.

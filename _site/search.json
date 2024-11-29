@@ -18,6 +18,27 @@
     "href": "index.html#types-of-content",
     "title": "DOA-journal-occupational",
     "section": "Types of content",
-    "text": "Types of content\nThe journal will publish the following types of content:\n\nResearch articles: Original research articles that present new findings in the field of occupational health. These articles will be peer-reviewed by experts in the field.\nReview articles: Comprehensive reviews of current topics in occupational health, including systematic reviews and meta-analyses.\nNarrative reviews: Articles that provide a narrative overview of a specific topic in occupational health, without the need for a systematic review.\nProtocols: Detailed descriptions of research protocols for studies in occupational health.\nTutorials: Articles that provide step-by-step instructions on how to perform specific techniques and/or analyses, with emphasis in open science practices.\nDataset: Description of a dataset with the potential to be reused by other practitioners and researchers in the occupational health field.\nSoftware: Description of software tools or applications that can be used by practitioners and researchers in the occupational health field.\nCommentaries: Opinion pieces or perspectives on current issues in occupational health.\nCase studies: Reports of unique cases or experiences in the field of occupational health.\nEditorial: Editorial content from the journal’s editorial board, including updates on the journal’s policies and practices."
+    "text": "Types of content\nSubmissions for all the different stages in the research processes sand practice will be published in the journal. This means that authors can submit protocols, commentaries, tutorials, datasets, softwares, among others.\nThe journal will publish the following types of content:\n\nResearch articles: Original research articles that present new findings in the field of occupational health. These articles will be peer-reviewed by experts in the field.\nReview articles: Comprehensive reviews of current topics in occupational health, including systematic reviews and meta-analyses.\nNarrative reviews: Articles that provide a narrative overview of a specific topic in occupational health, without the need for a systematic review.\nProtocols: Detailed descriptions of research protocols for scientific studies in occupational health, protocols that improve practice within industry, or public health recommendations.\nMethods: Articles that study or describe research methods or applications in practice.\nComputational Tutorials: Step-by-step instructions on how to perform specific techniques and/or analyses, with emphasis in open science practices.\nDataset: Description of a dataset with the potential to be reused by other practitioners and researchers in the occupational health field.\nSoftware: Description of software tools or applications that can be used by practitioners and researchers in the occupational health field.\nCommentaries: Opinion pieces or perspectives on current issues in occupational health.\nCase studies: Reports of unique cases or experiences in the field of occupational health.\nEditorial: Editorial content from the journal’s editorial board, including updates on the journal’s policies and practices."
+  },
+  {
+    "objectID": "index.html#description",
+    "href": "index.html#description",
+    "title": "DOA-journal-occupational",
+    "section": "",
+    "text": "This is a project proposal for a diamond open access (DOA) journal in occupational health, with a focus on the publication of research and educational content, as well as experiences from young researchers in the field. As an academic and community-led journal, content will be published online-only, at no cost to authors and readers, whilst allowing authors to retain copyright of their work.\nTo learn more about the diamond open access (DOA) publication model, please refer to https://www.coalition-s.org/diamond-open-access/."
+  },
+  {
+    "objectID": "index.html#aims",
+    "href": "index.html#aims",
+    "title": "DOA-journal-occupational",
+    "section": "Aims",
+    "text": "Aims\nJournal Title (TBD) aims to be a forum for researchers in occupational health, occupational exposure science, and occupational epidemiology, with representation of researchers from all over the world, including low to middle-income countries, early-career researchers, practitioners, and stakeholders. To make this possible, we work with a diamond open access publication model, making content available to the research community at no cost to researchers nor readers. The journal embraces open science practices, so we operate with (optional) open peer-review. Data and code can be submitted as independent research outputs and we embrace their availability accompanying research papers published in the journal. We welcome submissions from all fronts aiming to improve occupational health to build links between academic and non-academic contexts of practice."
+  },
+  {
+    "objectID": "index.html#scope",
+    "href": "index.html#scope",
+    "title": "DOA-journal-occupational",
+    "section": "Scope",
+    "text": "Scope\nNovel topics within the field (just to mention how novelty can be addressed with examples)\n\nOccupational exposome – the ‘Worksome’; occupation-course epidemiology (instead of life-course epidemiology)\nGeospatial analysis in occupational epidemiology (ex. air pollutants, surface temperature, built-up environment, etc.)\nClimate change and workers (ex. methodological needs?)/ Occupational global health/ and occupational infectious diseases in non-healthcare workers"
   }
 ]

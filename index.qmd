@@ -14,6 +14,8 @@ To learn more about the diamond open access (DOA) publication model, please refe
 
 ## Scope
 
+Any paper related to the occupational health field will be considered for publication. This includes papers addressing but not limited to: exposure at the workplace to chemical, physical, biological, ergonomic, psychosocial, among others; health outcomes (acute, chronic, accidents), interventions at the workplace, prevention, decision making, and aspects related to the practice of occupational hygiene and medicine from their many different areas. There is also special interest in the publication of classical and novel (computational) methods in the form of full-length papers, descriptions of new computational packages (R, python, etc.), or tutorials. The journal encourages authors to accompany their submissions with any underlying data and code for reproducibility whenever possible (i.e., GitHub repository, dataverse, zenodo, etc.). These can also be submitted as individual items for simultaneous publication in the journal.
+
 Novel topics within the field (just to mention how novelty can be addressed with examples)
 
 -   Occupational exposome – the ‘Worksome’; occupation-course epidemiology (instead of life-course epidemiology)
@@ -36,6 +38,22 @@ The journal will publish the following types of content:
 6.  **Computational Tutorials**: Step-by-step instructions on how to perform specific techniques and/or analyses, with emphasis in open science practices.
 7.  **Dataset**: Description of a dataset with the potential to be reused by other practitioners and researchers in the occupational health field.
 8.  **Software**: Description of software tools or applications that can be used by practitioners and researchers in the occupational health field.
-9.  **Commentaries**: Opinion pieces or perspectives on current issues in occupational health.
-10. **Case studies**: Reports of unique cases or experiences in the field of occupational health.
+9.  **Case studies**: Reports of unique cases or experiences in the field of occupational health.
+10. **Commentaries**: Opinion pieces or perspectives on current issues in occupational health.
 11. **Editorial**: Editorial content from the journal's editorial board, including updates on the journal's policies and practices.
+
+## Peer Review 
+
+The journal operates in a flexible open peer-review model, which means that both the author and reviewer are aware of the identity of each other; however, every part involved in the peer review is able to request opting out (remaining anonymous) for numerous reasons which can be selected at submission of the manuscript for authors or at the moment of accepting to review an article by reviewers.
+
+There is also an option to opt-in into a crowd peer review process with early publication, where the journal will present the submitted manuscript to its readers for an open review by members of the community. This will grant early access to the manuscript
+
+## Community Engagement
+
+#### Twitch
+
+#### Social Media
+
+#### Slack
+
+#### ForumFree 

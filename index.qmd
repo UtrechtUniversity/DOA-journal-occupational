@@ -42,7 +42,7 @@ The journal will publish the following types of content:
 10. **Commentaries**: Opinion pieces or perspectives on current issues in occupational health.
 11. **Editorial**: Editorial content from the journal's editorial board, including updates on the journal's policies and practices.
 
-## Peer Review 
+## Peer Review
 
 The journal operates in a flexible open peer-review model, which means that both the author and reviewer are aware of the identity of each other; however, every part involved in the peer review is able to request opting out (remaining anonymous) for numerous reasons which can be selected at submission of the manuscript for authors or at the moment of accepting to review an article by reviewers.
 
@@ -56,4 +56,4 @@ There is also an option to opt-in into a crowd peer review process with early pu
 
 #### Slack
 
-#### ForumFree 
+#### ForumFree

@@ -1,5 +1,5 @@
 ---
-title: "DOA-journal-occupational"
+title: "Exposure and Health in the Workplace"
 ---
 
 ## Description
@@ -10,7 +10,7 @@ To learn more about the diamond open access (DOA) publication model, please refe
 
 ## Aims
 
-*Journal Title (TBD)* aims to be a forum for researchers in occupational health, occupational exposure science, and occupational epidemiology, with representation of researchers from all over the world, including low to middle-income countries, early-career researchers, practitioners, and stakeholders. To make this possible, we work with a diamond open access publication model, making content available to the research community at no cost to researchers nor readers. The journal embraces open science practices, so we operate with (optional) open peer-review. Data and code can be submitted as independent research outputs and we embrace their availability accompanying research papers published in the journal. We welcome submissions from all fronts aiming to improve occupational health to build links between academic and non-academic contexts of practice.
+*Exposure and Health in the Workplace* aims to be a forum for researchers and practitioners in occupational health, occupational exposure science, and occupational epidemiology, with representation of researchers from all over the world, including low to middle-income countries, early-career researchers, consultants, and stakeholders. To make this possible, we work with a diamond open access publication model, making content available to the research community at no cost to researchers nor readers. The journal embraces open science practices, so we operate with (optional) open peer-review. Data and code can be submitted as independent research outputs to accompany research papers published in the journal. We welcome submissions from all fronts aiming to improve occupational health to build links between academic and non-academic contexts of practice.
 
 ## Scope
 
@@ -36,10 +36,10 @@ The journal will publish the following types of content:
 4.  **Protocols**: Detailed descriptions of research protocols for scientific studies in occupational health, protocols that improve practice within industry, or public health recommendations.
 5.  **Methods**: Articles that study or describe research methods or applications in practice.
 6.  **Computational Tutorials**: Step-by-step instructions on how to perform specific techniques and/or analyses, with emphasis in open science practices.
-7.  **Dataset**: Description of a dataset with the potential to be reused by other practitioners and researchers in the occupational health field.
+7.  **Dataset**: Description of a dataset with the potential to be reused by other practitioners and researchers in the occupational health field. The referred dataset should be deposited in a public repository (i.e., Harvard Dataverse, Figshare).
 8.  **Software**: Description of software tools or applications that can be used by practitioners and researchers in the occupational health field.
 9.  **Case studies**: Reports of unique cases or experiences in the field of occupational health.
-10. **Commentaries**: Opinion pieces or perspectives on current issues in occupational health.
+10. **Commentaries**: Opinion pieces, perspectives, debates, journal clubs on current issues in occupational health.
 11. **Editorial**: Editorial content from the journal's editorial board, including updates on the journal's policies and practices.
 
 ## Peer Review

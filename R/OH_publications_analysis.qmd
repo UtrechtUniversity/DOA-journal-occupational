@@ -1,0 +1,253 @@
+---
+title: "Bibliographic analysis of occupational health journals"
+author: 
+  - "Javier Mancilla Galindo"
+date: today
+execute: 
+  echo: false
+  warning: false
+format:
+  html:
+    toc: true
+    toc_float: true
+    embed-resources: true
+    code-links:
+        - text: "GitHub"
+          href: https://github.com/UtrechtUniversity/DOA-journal-occupational
+          icon: github
+  pdf: 
+    toc: true
+    documentclass: scrartcl
+editor: source
+---
+
+```{r}
+#| include: false  
+
+# Create directories for sub-folders  
+inputfolder <- "../data/raw"
+psfolder <- "../data/processed"
+tempfolder <- "../data/temp"
+figfolder <- "../results/output_figures"
+tabfolder <- "../results/output_tables"
+
+dir.create(inputfolder, showWarnings = FALSE)
+dir.create(psfolder, showWarnings = FALSE)
+dir.create(tempfolder, showWarnings = FALSE)
+dir.create(figfolder, showWarnings = FALSE)
+dir.create(tabfolder, showWarnings = FALSE)
+```
+
+```{r}
+
+if (!require("pacman", quietly = TRUE)) {
+  install.packages("pacman")
+}
+
+pacman::p_load(
+  tidyverse,
+  writexl,
+  readxl,
+  rvest,
+  rcrossref,
+  httr,
+  jsonlite,
+  gt,
+  report
+)
+
+```
+
+The list of journals indexed for OSHLINE® was extracted on 23/04/2025 from the Canadian Centre for Occupational Health and Safety [public website](https://www.ccohs.ca/products/supplements/oshline/oshline_journal_list.html). This list contains journal names and their ISSN.
+
+```{r}
+#| echo: true 
+OSHLINE_journals <- read_html(paste0(inputfolder,"/oshline_journal_list.html"))
+```
+
+A dataset will be generated from the html file by using functions from the [`rvest`](https://rvest.tidyverse.org/) package to obtain a column with the journal name and the ISSN.
+
+```{r}
+# Extract and clean text from html file
+journal_text <- OSHLINE_journals %>%
+  html_elements("div.centralContainer p") %>%
+  html_text(trim = TRUE)
+
+# Drop first 3 non-journal entries
+journal_text <- journal_text[-c(1:3)]
+
+# Split entries that contain multiple journals (multiple ISSNs in one line)
+# Use regex to split lines where ISSN pattern is followed by another ISSN
+split_lines <- unlist(strsplit(journal_text, "(?<=\\d{4}-\\d{3}[\\dX])(?=\\S)", perl = TRUE))
+
+# Clean whitespace and remove empties
+split_lines <- str_trim(split_lines)
+split_lines <- split_lines[split_lines != ""]
+
+# Identify correct ISSNs, filter valid lines
+journal_df <- tibble(raw_entry = split_lines) %>%
+  mutate(
+    issn = str_extract_all(raw_entry, "\\d{4}-\\d{3}[\\dX]"),
+    count = map_int(issn, length)
+  ) %>%
+  unnest(issn) %>%
+  mutate(journal_name = str_trim(str_remove(raw_entry, issn))) %>%
+  select(journal_name, issn, raw_entry)
+
+# Examine
+glimpse(journal_df)
+
+# Save as excel file to resolve some remaining collapsed rows and errors
+write_xlsx(journal_df, path = file.path(tempfolder, "OSHLINE_journals.xlsx")) 
+```
+
+After manual inspection and checks for errors, two journals were removed as the ISSN was not registered for one (*Facility Safety Management*) and the correct ISSN could not be identified for a journal with no exact name matches (*Health Promotion*). *Environmental Carcinogenesis and Ecotoxicology Reviews* (ISSN = 1059-0501) was removed as this was a duplicate of the *Journal of Environmental Science and Health. Part C, Environmental Carcinogenesis & Ecotoxicology Reviews* (ISSN = 1059-0501).
+
+```{r}
+#| echo: true 
+journal_df <- read_excel(path = file.path(psfolder,"OSHLINE_journals.xlsx"))
+```
+
+```{r}
+#| include: false 
+# Check if all have unique ISSN 
+journal_df %>%
+  group_by(issn) %>%
+  filter(n() > 1)
+```
+
+This resulted in a total of **n = `r count(journal_df)`** journals.
+
+The metadata for these journals will be enriched by using the [`rcrossref`](https://rvest.tidyverse.org/) package by first searching for the ISSN. For cases where there is no ISSN match, journal titles will be searched. 
+
+```{r}
+#| echo: true 
+
+source("scripts/crossref_metadata.R")
+```
+
+```{r}
+#| echo: true 
+journals_crossref <- read_excel(path = file.path(psfolder,"OSHLINE_crossref.xlsx"))
+```
+
+Retrieve electronic issn from ISSN portal 
+```{r}
+
+get_eissn_simple <- function(issn) {
+  # Skip NA values
+  if (is.na(issn)) return(NA_character_)
+  
+  # Add delay to respect server limits
+  Sys.sleep(1)
+  
+  tryCatch({
+    # Build the URL
+    url <- paste0("https://portal.issn.org/resource/ISSN/", issn)
+    
+    # Make request
+    response <- GET(url)
+    
+    if (status_code(response) == 200) {
+      # Get the page content as text
+      content_text <- content(response, "text", encoding = "UTF-8")
+      
+      # Find all ISSNs in the text
+      all_issns <- unique(str_extract_all(content_text, "\\d{4}-\\d{3}[\\dX]")[[1]])
+      
+      # Filter out the input ISSN
+      other_issns <- all_issns[all_issns != issn]
+      
+      # If there's another ISSN, it's likely the electronic one
+      if (length(other_issns) > 0) {
+        return(other_issns[1])
+      }
+    }
+    
+    return(NA_character_)
+  }, error = function(e) {
+    # Silently handle errors
+    return(NA_character_)
+  })
+}
+
+# First convert the electronic_issn column from logical to character
+journals_crossref <- journals_crossref %>%
+  mutate(electronic_issn = as.character(NA))
+
+# Try with issn first
+journals_with_eissn <- journals_crossref %>%
+  mutate(electronic_issn = sapply(issn, get_eissn_simple))
+
+# For rows where electronic_issn is still NA, try with the print_issn column
+journals_with_eissn <- journals_with_eissn %>%
+  mutate(electronic_issn = ifelse(
+    is.na(electronic_issn) & !is.na(print_issn), 
+    sapply(print_issn[is.na(electronic_issn) & !is.na(print_issn)], get_eissn_simple),
+    electronic_issn
+  ))
+```
+
+
+```{r}
+# Save as excel file to resolve some remaining collapsed rows and errors
+write_xlsx(journals_with_eissn, path = file.path(tempfolder, "OSHLINE_journals_eissn.xlsx")) 
+```
+
+Discordant ISSN from the original OSHLINE dataset and crossref were manually removed and checked against the ISSN portal. One journal was removed because its ISSN could not be confirmed in the ISSN portal (*Occupational Health and Safety (Tx.)*). 
+
+```{r}
+#| echo: true 
+journals_with_eissn <- read_excel(path = file.path(psfolder,"OSHLINE_journals_eissn.xlsx")) 
+```
+
+```{r}
+get_doaj_match <- function(issn, electronic_issn, print_issn) {
+  
+  Sys.sleep(0.5)
+  match_found <- function(query_string, type = "issn") {
+    # Skip if NA or empty
+    if (is.na(query_string) || query_string == "") {
+      return(FALSE)
+    }
+    
+    base_url <- paste0("https://doaj.org/api/v2/search/journals/issn:", query_string)
+    res <- GET(base_url)
+    if (status_code(res) == 200) {
+      json <- fromJSON(content(res, as = "text", encoding = "UTF-8"))
+      return(length(json$results) > 0)
+    }
+    return(FALSE)
+  }
+  
+  # Search in the specified order: issn, electronic_issn, print_issn
+  return(any(
+    match_found(issn),
+    !is.na(electronic_issn) && match_found(electronic_issn),
+    !is.na(print_issn) && match_found(print_issn)
+  ))
+}
+
+journals_doaj <- journals_with_eissn %>%
+  select(-issn_print_exact_match) %>% 
+  rowwise() %>%
+  mutate(doaj_match = get_doaj_match(issn, electronic_issn, print_issn)) %>%
+  ungroup()
+```
+
+```{r}
+write_xlsx(journals_doaj, path = file.path(tempfolder, "OSHLINE_journals_DOAJ_match.xlsx")) 
+```
+
+```{r}
+#| echo: true 
+journals_doaj <- read_excel(path = file.path(psfolder,"OSHLINE_journals_DOAJ_match.xlsx")) 
+```
+
+```{r}
+journals_doaj %>% group_by(doaj_match) %>% 
+  summarize(n = n()) %>% 
+  mutate(percentage = round((n/sum(n) * 100),1))
+```
+
+

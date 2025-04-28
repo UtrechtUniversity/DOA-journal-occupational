@@ -1,8 +1,18 @@
 ---
-title: "Bibliographic analysis of occupational health journals"
+title: "Abstract EPICOH"
+subtitle: "Bibliographic analysis of occupational health journals indexed for OSHLINE®"
 author: 
-  - "Javier Mancilla Galindo"
+  - name: Javier Mancilla Galindo
+    affiliation: Institute for Risk Assessment Sciences, Utrecht University, Utrecht, The Netherlands
+    orcid: 0000-0002-0718-467X
+    email: j.mancillagalindo@uu.nl
 date: today
+abstract: |
+  <b>Objective:</b> Open access (OA) publishing allows research to be available to readers at no cost. Under different OA models, costs are transferred to authors, funders, or institutions. This study aimed to evaluate occupational health and safety journals’ policies and indexing for OA.  
+  <b>Material and Methods:</b> Journals indexed in the OSHLINE database (n = 216) were identified and their bibliographic characteristics and were obtained from the Crossref, ISSN, and Ulrichsweb databases. Non-academic (n = 9), discontinued (n = 4), and unverified (n = 1) publications were excluded. Remaining journals were searched for indexing in the Directory of Open Access Journals (DOAJ). Data on OA publishing start year, article processing charges (APC), author copyright retention, and available licenses were retrieved from DOAJ. Journals were classified as diamond or non-diamond OA as per the DIAMAS criteria (persistent identification, scholarly journal, OA with licenses, no fees, open to all authors, and community-owned). Publishers were labelled as commercial and non-commercial by reviewing publishers’ websites and stock exchange listings.   
+  <b>Results:</b> Out of the 202 journals analyzed, only 13 (6.4%) were indexed in DOAJ. Of these, only 2 were diamond OA journals. The median APC was 1894 EUR (IQR: 690–2390, range: 0–2875). Journals owned by commercial publishers charged higher APC than non-commercial publishers (median 1424 vs 2490 EUR, p = 0.03). Eight (61.5%) allowed authors to retain the copyright of their works. CC-BY licenses were commonly allowed (n = 11, 84.6%), followed by CC0 (n = 5, 38.5%), and CC BY-NC-ND (n = 3, 23.1%). 
+  <b>Conclusion:</b> Few occupational health and safety journals indexed in OSHLINE are fully OA, with only 1% diamond OA. Journals owned by commercial publishers charge higher fees to authors, institutions, and funders, on average. Existing journals could evaluate transitioning to non-commercial or diamond OA, while new diamond OA journal initiatives should be encouraged.  
+keywords: ["Occupational Health", "Open Access Publishing", "Bibliometrics", "Scholarly Communication", "Publishing"]
 execute: 
   echo: false
   warning: false
@@ -11,13 +21,19 @@ format:
     toc: true
     toc_float: true
     embed-resources: true
+    echo: true
+    code-fold: true
+    code-overflow: wrap
+    code-tools: true
     code-links:
         - text: "GitHub"
           href: https://github.com/UtrechtUniversity/DOA-journal-occupational
           icon: github
   pdf: 
-    toc: true
+    toc: false
     documentclass: scrartcl
+  docx: 
+    toc: false
 editor: source
 ---
 
@@ -38,7 +54,12 @@ dir.create(figfolder, showWarnings = FALSE)
 dir.create(tabfolder, showWarnings = FALSE)
 ```
 
+{{< pagebreak >}}
+
+# Description 
+
 ```{r}
+# Packages used in this session. 
 
 if (!require("pacman", quietly = TRUE)) {
   install.packages("pacman")
@@ -52,6 +73,7 @@ pacman::p_load(
   rcrossref,
   httr,
   jsonlite,
+  ggrepel,
   gt,
   report
 )
@@ -61,11 +83,10 @@ pacman::p_load(
 The list of journals indexed for OSHLINE® was extracted on 23/04/2025 from the Canadian Centre for Occupational Health and Safety [public website](https://www.ccohs.ca/products/supplements/oshline/oshline_journal_list.html). This list contains journal names and their ISSN.
 
 ```{r}
-#| echo: true 
 OSHLINE_journals <- read_html(paste0(inputfolder,"/oshline_journal_list.html"))
 ```
 
-A dataset will be generated from the html file by using functions from the [`rvest`](https://rvest.tidyverse.org/) package to obtain a column with the journal name and the ISSN.
+A dataset was be generated from the html file by using functions from the [`rvest`](https://rvest.tidyverse.org/) package to obtain a column with the journal name and the ISSN.
 
 ```{r}
 # Extract and clean text from html file
@@ -94,17 +115,13 @@ journal_df <- tibble(raw_entry = split_lines) %>%
   mutate(journal_name = str_trim(str_remove(raw_entry, issn))) %>%
   select(journal_name, issn, raw_entry)
 
-# Examine
-glimpse(journal_df)
-
 # Save as excel file to resolve some remaining collapsed rows and errors
 write_xlsx(journal_df, path = file.path(tempfolder, "OSHLINE_journals.xlsx")) 
 ```
 
-After manual inspection and checks for errors, two journals were removed as the ISSN was not registered for one (*Facility Safety Management*) and the correct ISSN could not be identified for a journal with no exact name matches (*Health Promotion*). *Environmental Carcinogenesis and Ecotoxicology Reviews* (ISSN = 1059-0501) was removed as this was a duplicate of the *Journal of Environmental Science and Health. Part C, Environmental Carcinogenesis & Ecotoxicology Reviews* (ISSN = 1059-0501).
+After manual inspection and checks for errors, two journals were removed as the ISSN was not registered for one (*Facility Safety Management*) and the correct ISSN could not be identified for a journal with no exact name matches (*Health Promotion*). The journal *Environmental Carcinogenesis and Ecotoxicology Reviews* (ISSN = 1059-0501) was removed as this was a duplicate of the *Journal of Environmental Science and Health. Part C, Environmental Carcinogenesis & Ecotoxicology Reviews* (ISSN = 1059-0501).
 
 ```{r}
-#| echo: true 
 journal_df <- read_excel(path = file.path(psfolder,"OSHLINE_journals.xlsx"))
 ```
 
@@ -118,136 +135,409 @@ journal_df %>%
 
 This resulted in a total of **n = `r count(journal_df)`** journals.
 
-The metadata for these journals will be enriched by using the [`rcrossref`](https://rvest.tidyverse.org/) package by first searching for the ISSN. For cases where there is no ISSN match, journal titles will be searched. 
+# Crossref
+
+The metadata for these journals was enriched by using the [`rcrossref`](https://rvest.tidyverse.org/) package by first searching for the ISSN. For cases where there is no ISSN match, journal titles were searched. 
 
 ```{r}
-#| echo: true 
+#| eval: false
 
 source("scripts/crossref_metadata.R")
 ```
 
 ```{r}
-#| echo: true 
 journals_crossref <- read_excel(path = file.path(psfolder,"OSHLINE_crossref.xlsx"))
 ```
 
-Retrieve electronic issn from ISSN portal 
-```{r}
+# ISSN Portal
 
-get_eissn_simple <- function(issn) {
-  # Skip NA values
-  if (is.na(issn)) return(NA_character_)
-  
-  # Add delay to respect server limits
-  Sys.sleep(1)
-  
-  tryCatch({
-    # Build the URL
-    url <- paste0("https://portal.issn.org/resource/ISSN/", issn)
-    
-    # Make request
-    response <- GET(url)
-    
-    if (status_code(response) == 200) {
-      # Get the page content as text
-      content_text <- content(response, "text", encoding = "UTF-8")
-      
-      # Find all ISSNs in the text
-      all_issns <- unique(str_extract_all(content_text, "\\d{4}-\\d{3}[\\dX]")[[1]])
-      
-      # Filter out the input ISSN
-      other_issns <- all_issns[all_issns != issn]
-      
-      # If there's another ISSN, it's likely the electronic one
-      if (length(other_issns) > 0) {
-        return(other_issns[1])
-      }
-    }
-    
-    return(NA_character_)
-  }, error = function(e) {
-    # Silently handle errors
-    return(NA_character_)
-  })
-}
-
-# First convert the electronic_issn column from logical to character
-journals_crossref <- journals_crossref %>%
-  mutate(electronic_issn = as.character(NA))
-
-# Try with issn first
-journals_with_eissn <- journals_crossref %>%
-  mutate(electronic_issn = sapply(issn, get_eissn_simple))
-
-# For rows where electronic_issn is still NA, try with the print_issn column
-journals_with_eissn <- journals_with_eissn %>%
-  mutate(electronic_issn = ifelse(
-    is.na(electronic_issn) & !is.na(print_issn), 
-    sapply(print_issn[is.na(electronic_issn) & !is.na(print_issn)], get_eissn_simple),
-    electronic_issn
-  ))
-```
-
+Data on the publisher and the ISSN linked to the journal title were retrieved from crossref. The electronic ISSN could not be retrieved. Therefore, the [ISSN portal](https://portal.issn.org/) was searched to extract other ISSNs, likely corresponding to the electronic ISSN. Later confirmation was done by matching of ISSNs against a robust bibliographic database (Ulrichsweb) as detailed below.  
 
 ```{r}
-# Save as excel file to resolve some remaining collapsed rows and errors
-write_xlsx(journals_with_eissn, path = file.path(tempfolder, "OSHLINE_journals_eissn.xlsx")) 
+#| eval: false
+
+source("scripts/electronic_issn_retrieval.R")
 ```
 
 Discordant ISSN from the original OSHLINE dataset and crossref were manually removed and checked against the ISSN portal. One journal was removed because its ISSN could not be confirmed in the ISSN portal (*Occupational Health and Safety (Tx.)*). 
 
 ```{r}
-#| echo: true 
-journals_with_eissn <- read_excel(path = file.path(psfolder,"OSHLINE_journals_eissn.xlsx")) 
+journals_with_eissn <- read_excel(path = file.path(psfolder,"OSHLINE_journals_eissn.xlsx")) %>% 
+  rowid_to_column() %>%
+  rename(id = rowid)
+```
+
+{{< pagebreak >}}
+
+# Ulrichsweb
+
+A list of all unduplicated ISSN was generated to search for individual ISSN in the [Ulrichsweb database](https://ulrichsweb.serialssolutions.com/) (Ulrichsweb.com™, Copyright © 2025 ProQuest LLC). 
+
+```{r}
+#| include: false
+issn_journals <- unique(c(
+    na.omit(journals_with_eissn$issn), 
+    na.omit(journals_with_eissn$print_issn), 
+    na.omit(journals_with_eissn$electronic_issn))
+    )
+
+cat(issn_journals)
 ```
 
 ```{r}
-get_doaj_match <- function(issn, electronic_issn, print_issn) {
-  
-  Sys.sleep(0.5)
-  match_found <- function(query_string, type = "issn") {
-    # Skip if NA or empty
-    if (is.na(query_string) || query_string == "") {
-      return(FALSE)
-    }
-    
-    base_url <- paste0("https://doaj.org/api/v2/search/journals/issn:", query_string)
-    res <- GET(base_url)
-    if (status_code(res) == 200) {
-      json <- fromJSON(content(res, as = "text", encoding = "UTF-8"))
-      return(length(json$results) > 0)
-    }
-    return(FALSE)
-  }
-  
-  # Search in the specified order: issn, electronic_issn, print_issn
-  return(any(
-    match_found(issn),
-    !is.na(electronic_issn) && match_found(electronic_issn),
-    !is.na(print_issn) && match_found(print_issn)
-  ))
-}
+# Load results of search in Ulrichsweb and remove the last row 
+ulrichsweb <- read.csv(
+  file.path(inputfolder, "2025_04_25_Ulrichsweb_oshline_journals.csv"), 
+  na.strings = "null"
+  ) %>% 
+  slice(1:(n() - 1)) %>% # remove the last row containing the copyright notice
+  rename(issn = "ISSN")
+```
 
-journals_doaj <- journals_with_eissn %>%
-  select(-issn_print_exact_match) %>% 
-  rowwise() %>%
-  mutate(doaj_match = get_doaj_match(issn, electronic_issn, print_issn)) %>%
-  ungroup()
+A total of **n = `r length(issn_journals)`** ISSNs (print and electronic) were searched, out of which **n = `r count(ulrichsweb)` (`r  (count(ulrichsweb)/length(issn_journals) * 100) %>% round(1)`%)** records were found in ulrichsweb and downloaded for further examination against the dataset.  
+
+```{r}
+# Convert the journals_with_eissn to long format 
+
+journals_long <- journals_with_eissn %>% 
+  rename(issn_oshline = issn) %>% 
+  pivot_longer(
+    cols = c(issn_oshline, print_issn, electronic_issn),
+    names_to = "issn_source",
+    values_to = "issn"
+  )
+
+# Deduplicate repeated issn 
+journals_long_dedup <- journals_long %>% 
+  distinct(issn, .keep_all = TRUE) %>% 
+  filter(!is.na(issn))
+
+# Left join with ulrichsweb dataset 
+journals_ulrichsweb_long <- journals_long_dedup %>% 
+  left_join(ulrichsweb, by = "issn")
 ```
 
 ```{r}
-write_xlsx(journals_doaj, path = file.path(tempfolder, "OSHLINE_journals_DOAJ_match.xlsx")) 
+# Remove ceased journals 
+journals_ulrichsweb_long <- journals_ulrichsweb_long %>% 
+  filter(!(Status %in% "Ceased"))
+
+# Identify the ids present in journals_with_eissn but not in journals_ulrichsweb_long
+removed_journal_ids <- journals_with_eissn %>%
+  anti_join(journals_ulrichsweb_long, by = "id") %>%
+  pull(id)
+```
+
+A total of **n = `r length(removed_journal_ids)` (`r (length(removed_journal_ids)/count(journals_with_eissn) * 100) %>% round(1)`%)** journals were removed from the dataset due to having a discontinued status without a subsequent active journal under a different publisher. The list of those journals is as follows:  
+
+```{r}
+# Show the names of the journals with those removed ids
+journals_with_eissn %>%
+  filter(id %in% removed_journal_ids) %>%
+  select(id, journal_name) %>% 
+  gt %>% 
+  cols_label(id = "ID", journal_name = "Journal")
 ```
 
 ```{r}
-#| echo: true 
+# Remove ceased journals 
+journals_ulrichsweb_long <- journals_ulrichsweb_long %>% 
+  filter(!(Content.Type %in% "Trade"))
+
+# Identify the ids present in journals_with_eissn but not in journals_ulrichsweb_long
+removed_journal_trade <- journals_with_eissn %>%
+  anti_join(journals_ulrichsweb_long, by = "id") %>%
+  filter(!(id %in% removed_journal_ids)) %>% 
+  pull(id)
+```
+
+A total of **n = `r length(removed_journal_trade)` (`r (length(removed_journal_trade)/count(journals_with_eissn) * 100) %>% round(1)`%)** journals were removed from the dataset due to not being academic or scholarly publications:  
+
+```{r}
+# Show the names of the journals with those removed ids
+journals_with_eissn %>%
+  filter(id %in% removed_journal_trade) %>%
+  select(id, journal_name) %>% 
+  gt %>% 
+  cols_label(id = "ID", journal_name = "Journal")
+```
+
+There were three journals with more than two ISSN identifier. The `print_issn` which had a match with ulrichsweb were kept instead of the OSHLINE ISSN. 
+
+```{r}
+issn_greater_two <- journals_ulrichsweb_long %>%
+  group_by(id) %>%       # Group the data by the identifier
+  summarise(
+    number_of_issn = n() # Count the number of unique ISSNs in each group
+  ) %>% 
+  filter(number_of_issn > 2) %>% 
+  pull(id)
+
+journals_ulrichsweb_long <- journals_ulrichsweb_long %>%
+  filter(!(id %in% issn_greater_two & issn_source == "issn_oshline")) %>% 
+  mutate(
+    issn_source = case_when(
+      issn_source == "electronic_issn" ~ "online",
+      T ~ "print"
+    )
+  )
+```
+
+
+
+```{r}
+# Remove definitively from journals_with_eissn
+
+journals_with_eissn <- journals_with_eissn %>% 
+  filter(!(id %in% c(removed_journal_ids, removed_journal_trade)))
+```
+
+{{< pagebreak >}}
+
+# DOAJ 
+
+```{r}
+#| eval: false
+
+source("scripts/DOAJ_match.R")
+```
+
+```{r}
 journals_doaj <- read_excel(path = file.path(psfolder,"OSHLINE_journals_DOAJ_match.xlsx")) 
 ```
 
+All the remaining **n = `r count(journals_ulrichsweb_long)`** ISSNs in the long dataframe containing bibliographic information from Ulrichsweb were searched in the DOAJ. Whenever an exact match was found for any ISSN, this was registered as TRUE in a new column. The journal ID with a TRUE value were identified and additional information on their open access publishing characteristics were exctracted for further analysis. 
+
 ```{r}
-journals_doaj %>% group_by(doaj_match) %>% 
-  summarize(n = n()) %>% 
-  mutate(percentage = round((n/sum(n) * 100),1))
+# id of journals with a doaj match
+
+id_journals_doaj <- journals_doaj %>%
+  filter(doaj_match == TRUE) %>%
+  distinct(id) %>% pull
 ```
 
+
+Out of the remaining **n = `r count(journals_with_eissn)`** journals, a total of **n = `r length(id_journals_doaj)` (`r (length(id_journals_doaj)/count(journals_with_eissn) * 100) %>% round(1)`%)** were indexed in the Directory of Open Access Journals (DOAJ):   
+
+```{r}
+# Show the names of the journals that had a DOAJ match
+journals_doaj %>%
+  filter(doaj_match == TRUE) %>%
+  distinct(id, journal_name) %>% 
+  gt %>% 
+  cols_label(id = "ID", journal_name = "Journal")
+```
+
+```{r}
+# Recreate the journals_with_eissn column to export data, as all data 
+# from ulrichsweb cannot be exported and shared publicly. 
+journals_with_eissn <- journals_with_eissn %>% 
+  mutate(
+    doaj_match = case_when(
+      id %in% id_journals_doaj ~ TRUE, 
+      T ~ FALSE
+    )
+  ) %>% 
+  select(-issn_print_exact_match)
+```
+
+
+```{r}
+write_xlsx(journals_with_eissn, path = file.path(tempfolder, "OSHLINE_journals_DOAJ_match.xlsx")) 
+```
+
+{{< pagebreak >}}
+
+# Analysis of journals indexed in DOAJ  
+
+The following analyses are restricted to the `r length(id_journals_doaj)` publications indexed in the DOAJ.
+
+```{r}
+journals_analysis <- read_excel(path = file.path(psfolder,"OSHLINE_journals_DOAJ_match.xlsx")) %>% 
+  filter(doaj_match == TRUE)
+```
+
+## Diamond Open Access 
+
+Journals were binary classified as diamond open access (DOA) and non-DOA based on meeting all six criteria stated in the [DIAMAS classification](https://diamasproject.eu/operational-diamond-oa-criteria-for-journals/). Only `r count(journals_analysis %>% filter(diamond_OA == "yes"))` journals met all criteria to be classified as DOA:
+
+```{r}
+# Show the names of the journals that had a DOAJ match
+journals_analysis %>%
+  filter(diamond_OA == "yes") %>%
+  distinct(id, journal_name) %>% 
+  gt %>% 
+  cols_label(id = "ID", journal_name = "Journal")
+```
+
+Therefore, the percentage of DOA journals out of the total set of publications was **`r ((count(journals_analysis %>% filter(diamond_OA == "yes"))/count(journals_with_eissn)) * 100) %>% round(1)`%**.
+
+## Article Processing Charges
+
+Whenever APC charges were registered in a currency distinct to euros (EUR), values were converted to EUR by using international currency exchange rates from [Google Finance](https://www.google.com/finance/) on 23/04/2025.
+
+The summary of journal article processing charges (APC) per article in euros (EUR) is shown in this table: 
+```{r}
+journals_analysis %>% 
+  summarize(
+    n = n(),
+    min = min(APC),
+    Q1 = quantile(APC,0.25),
+    median = median(APC),
+    Q3 = quantile(APC,0.75),
+    max = max(APC)
+  ) %>% 
+  gt %>% 
+  cols_label(n = "Number of Journals") %>% 
+  cols_align(
+    align = "center",
+    columns = everything()
+    )
+```
+
+The status of the publisher as a *commercial* or *non-commercial* publisher was classified by reviewing the publishers' websites when available, or listings of companies on a stock exchange (if true, these were labelled as commercial).
+
+The summary of APC in EUR according to commercial status of the publisher is as follows: 
+
+```{r}
+journals_analysis %>% 
+  group_by(commercial_publisher) %>% 
+  summarize(
+    n = n(),
+    min = min(APC),
+    Q1 = quantile(APC,0.25),
+    median = median(APC),
+    Q3 = quantile(APC,0.75),
+    max = max(APC)
+  ) %>% 
+  gt %>% 
+  cols_label(
+    n = "Number of Journals", 
+    commercial_publisher = "Commercial Publisher"
+    ) %>% 
+  cols_align(
+    align = "center",
+    columns = everything()
+    )
+```
+
+```{r}
+boxplot(APC ~ commercial_publisher,
+        data = journals_analysis,
+        horizontal = TRUE,
+        ylab = "Commercial publisher",
+        xlab = "Article processing charges (APC) in EUR",
+        col = "darkblue"
+        )
+```
+
+The Mann-Withney U-test (Wilcoxon's rank sum test) was applied to test the alternative hypothesis that the APC differed according to publisher commercial status classification: 
+
+```{r}
+wil <- wilcox.test(APC ~ commercial_publisher, 
+                   data = journals_analysis, 
+                   exact = FALSE
+                   )
+wil
+```
+
+## Year of conversion to OA 
+
+The year of registration of journals as fully open access (OA) is summarized in the following table: 
+```{r}
+journals_analysis %>% 
+  summarize(
+    n = n(),
+    min = min(OA_since),
+    Q1 = quantile(OA_since,0.25),
+    median = median(OA_since),
+    Q3 = quantile(OA_since,0.75),
+    max = max(OA_since)
+  ) %>% 
+  gt %>% 
+  cols_label(n = "Number of Journals") %>% 
+  cols_align(
+    align = "center",
+    columns = everything()
+    )
+```
+
+The onset of publication as fully OA, according to journal commercial status is shown in the following plot: 
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6
+
+journals_analysis %>%
+  ggplot(aes(x = OA_since, y = 0, color = commercial_publisher)) +
+  facet_grid(rows = vars(commercial_publisher), switch = "y") +
+  geom_point(size = 4, alpha = 1/5) +
+  geom_text(
+    aes(label = MEDLINE_abbreviation),
+    vjust = -1,       # slightly above the points
+    hjust = 0.35,          # align to the left of each label
+    angle = 90,         # rotate the text
+    size = 3.5
+  ) +
+  scale_color_manual(values = c("yes" = "tomato", "no" = "steelblue")) +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 13),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    strip.text = element_text(size = 12, face = "bold"),
+    legend.position = "none"
+  ) +
+  labs(
+    title = "Timeline of Open Access (OA) journal status onset",
+    y = "Commercial Publisher",
+    x = "Year"
+  ) 
+
+
+```
+
+## Author copyright  
+
+Out of the `r count(journals_analysis)` publications included for analysis, **n = `r count(journals_analysis %>% filter(author_copyright == "yes"))` (`r ((count(journals_analysis %>% filter(author_copyright == "yes"))/count(journals_analysis)) * 100) %>% round(1)`%)** allowed authors to retain the copyright of their works. 
+
+## Licensing 
+
+The types of licenses allowed in the journals indexed in DOAJ were the following: 
+
+```{r}
+journals_analysis %>% 
+  mutate(N = length(id)) %>% 
+  separate_rows(License, sep = ", ") %>% 
+  group_by(License) %>% 
+  summarize(n = n(), N = first(N)) %>%
+  arrange(desc(n)) %>% 
+  mutate(Percentage = round((n/N * 100),1)) %>% 
+  gt %>% 
+  cols_hide(N)
+```
+
+
+{{< pagebreak >}}
+
+# R Package References
+
+```{r}
+#| include: false  
+
+# remove clutter
+session <- sessionInfo()
+session$BLAS <- NULL
+session$LAPACK <- NULL
+session$loadedOnly <- NULL
+
+session
+```
+
+```{r}
+#| output: asis
+report::cite_packages(session)
+```
 

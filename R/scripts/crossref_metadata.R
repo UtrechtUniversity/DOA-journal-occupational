@@ -1,10 +1,31 @@
+#### About this script ####
+## Title: Journal Metadata Retrieval using Crossref API.
+##
+## Author: Javier Mancilla Galindo
+## ORCiD: https://orcid.org/0000-0002-0718-467X
+
+## Purpose: This script retrieves and enriches journal metadata by
+## querying the Crossref API. It begins by extracting a list of ISSNs 
+## from a dataframe named `journal_df`. For each ISSN, data retrieved
+## includes the title, publisher, and both print and electronic ISSNs. 
+## In cases where metadata retrieval via ISSN is unsuccessful, the 
+## script employs a fallback mechanism, using the journal's name. 
+## The retrieved metadata is then merged back into the original `journal_df`, 
+## creating an enriched dataframe (`journal_df_enriched`). The resulting  
+## is saved as an Excel file within a temporary folder for manual review
+## and further investigation of missing information.
+
+## Note: This script is sourced into the main quarto markdown file (.qmd) and 
+## shall not be ran independently as it assumes that the objects have already 
+## been defined in the global environment. 
+
 issn_list <- journal_df %>%
   # distinct(issn) %>% (in case there would be duplicates)
   pull(issn)
 
-# --- Function to get metadata via ISSN ---
+# Function to get metadata via ISSN
 get_crossref_metadata <- function(issn) {
-  Sys.sleep(1)  # Respect Crossref rate limits
+  Sys.sleep(0.5)  # Respect Crossref rate limits
   tryCatch({
     res <- cr_journals(issn)
     data <- res$data
@@ -41,7 +62,7 @@ missing_metadata <- journal_df_enriched %>%
   distinct(journal_name) %>%
   pull(journal_name)
 
-# --- Function to get metadata via journal name if ISSN search failed ---
+# Function to get metadata via journal name if ISSN search failed 
 get_crossref_by_name <- function(journal_name) {
   Sys.sleep(1)
   tryCatch({

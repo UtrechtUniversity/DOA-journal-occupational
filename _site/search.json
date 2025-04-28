@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "DOA-journal-occupational",
+    "title": "Exposure and Health in the Workplace",
     "section": "",
     "text": "This is a project proposal for a diamond open access (DOA) journal in occupational health, with a focus on the publication of research and educational content, as well as experiences from young researchers in the field. As an academic and community-led journal, content will be published online-only, at no cost to authors and readers, whilst allowing authors to retain copyright of their work.\nTo learn more about the diamond open access (DOA) publication model, please refer to https://www.coalition-s.org/diamond-open-access/."
   },
@@ -16,43 +16,99 @@
   {
     "objectID": "index.html#types-of-content",
     "href": "index.html#types-of-content",
-    "title": "DOA-journal-occupational",
+    "title": "Exposure and Health in the Workplace",
     "section": "Types of content",
-    "text": "Types of content\nSubmissions for all the different stages in the research processes sand practice will be published in the journal. This means that authors can submit protocols, commentaries, tutorials, datasets, softwares, among others.\nThe journal will publish the following types of content:\n\nResearch articles: Original research articles that present new findings in the field of occupational health. These articles will be peer-reviewed by experts in the field.\nReview articles: Comprehensive reviews of current topics in occupational health, including systematic reviews and meta-analyses.\nNarrative reviews: Articles that provide a narrative overview of a specific topic in occupational health, without the need for a systematic review.\nProtocols: Detailed descriptions of research protocols for scientific studies in occupational health, protocols that improve practice within industry, or public health recommendations.\nMethods: Articles that study or describe research methods or applications in practice.\nComputational Tutorials: Step-by-step instructions on how to perform specific techniques and/or analyses, with emphasis in open science practices.\nDataset: Description of a dataset with the potential to be reused by other practitioners and researchers in the occupational health field.\nSoftware: Description of software tools or applications that can be used by practitioners and researchers in the occupational health field.\nCase studies: Reports of unique cases or experiences in the field of occupational health.\nCommentaries: Opinion pieces or perspectives on current issues in occupational health.\nEditorial: Editorial content from the journal’s editorial board, including updates on the journal’s policies and practices."
+    "text": "Types of content\nSubmissions for all the different stages in the research processes sand practice will be published in the journal. This means that authors can submit protocols, commentaries, tutorials, datasets, softwares, among others.\nThe journal will publish the following types of content:\n\nResearch articles: Original research articles that present new findings in the field of occupational health. These articles will be peer-reviewed by experts in the field.\nReview articles: Comprehensive reviews of current topics in occupational health, including systematic reviews and meta-analyses.\nNarrative reviews: Articles that provide a narrative overview of a specific topic in occupational health, without the need for a systematic review.\nProtocols: Detailed descriptions of research protocols for scientific studies in occupational health, protocols that improve practice within industry, or public health recommendations.\nMethods: Articles that study or describe research methods or applications in practice.\nComputational Tutorials: Step-by-step instructions on how to perform specific techniques and/or analyses, with emphasis in open science practices.\nDataset: Description of a dataset with the potential to be reused by other practitioners and researchers in the occupational health field. The referred dataset should be deposited in a public repository (i.e., Harvard Dataverse, Figshare).\nSoftware: Description of software tools or applications that can be used by practitioners and researchers in the occupational health field.\nCase studies: Reports of unique cases or experiences in the field of occupational health.\nCommentaries: Opinion pieces, perspectives, debates, journal clubs on current issues in occupational health.\nEditorial: Editorial content from the journal’s editorial board, including updates on the journal’s policies and practices."
   },
   {
     "objectID": "index.html#description",
     "href": "index.html#description",
-    "title": "DOA-journal-occupational",
+    "title": "Exposure and Health in the Workplace",
     "section": "",
     "text": "This is a project proposal for a diamond open access (DOA) journal in occupational health, with a focus on the publication of research and educational content, as well as experiences from young researchers in the field. As an academic and community-led journal, content will be published online-only, at no cost to authors and readers, whilst allowing authors to retain copyright of their work.\nTo learn more about the diamond open access (DOA) publication model, please refer to https://www.coalition-s.org/diamond-open-access/."
   },
   {
     "objectID": "index.html#aims",
     "href": "index.html#aims",
-    "title": "DOA-journal-occupational",
+    "title": "Exposure and Health in the Workplace",
     "section": "Aims",
-    "text": "Aims\nJournal Title (TBD) aims to be a forum for researchers in occupational health, occupational exposure science, and occupational epidemiology, with representation of researchers from all over the world, including low to middle-income countries, early-career researchers, practitioners, and stakeholders. To make this possible, we work with a diamond open access publication model, making content available to the research community at no cost to researchers nor readers. The journal embraces open science practices, so we operate with (optional) open peer-review. Data and code can be submitted as independent research outputs and we embrace their availability accompanying research papers published in the journal. We welcome submissions from all fronts aiming to improve occupational health to build links between academic and non-academic contexts of practice."
+    "text": "Aims\nExposure and Health in the Workplace aims to be a forum for researchers and practitioners in occupational health, occupational exposure science, and occupational epidemiology, with representation of researchers from all over the world, including low to middle-income countries, early-career researchers, consultants, and stakeholders. To make this possible, we work with a diamond open access publication model, making content available to the research community at no cost to researchers nor readers. The journal embraces open science practices, so we operate with (optional) open peer-review. Data and code can be submitted as independent research outputs to accompany research papers published in the journal. We welcome submissions from all fronts aiming to improve occupational health to build links between academic and non-academic contexts of practice."
   },
   {
     "objectID": "index.html#scope",
     "href": "index.html#scope",
-    "title": "DOA-journal-occupational",
+    "title": "Exposure and Health in the Workplace",
     "section": "Scope",
     "text": "Scope\nAny paper related to the occupational health field will be considered for publication. This includes papers addressing but not limited to: exposure at the workplace to chemical, physical, biological, ergonomic, psychosocial, among others; health outcomes (acute, chronic, accidents), interventions at the workplace, prevention, decision making, and aspects related to the practice of occupational hygiene and medicine from their many different areas. There is also special interest in the publication of classical and novel (computational) methods in the form of full-length papers, descriptions of new computational packages (R, python, etc.), or tutorials. The journal encourages authors to accompany their submissions with any underlying data and code for reproducibility whenever possible (i.e., GitHub repository, dataverse, zenodo, etc.). These can also be submitted as individual items for simultaneous publication in the journal.\nNovel topics within the field (just to mention how novelty can be addressed with examples)\n\nOccupational exposome – the ‘Worksome’; occupation-course epidemiology (instead of life-course epidemiology)\nGeospatial analysis in occupational epidemiology (ex. air pollutants, surface temperature, built-up environment, etc.)\nClimate change and workers (ex. methodological needs?)/ Occupational global health/ and occupational infectious diseases in non-healthcare workers"
   },
   {
     "objectID": "index.html#peer-review",
     "href": "index.html#peer-review",
-    "title": "DOA-journal-occupational",
+    "title": "Exposure and Health in the Workplace",
     "section": "Peer Review",
     "text": "Peer Review\nThe journal operates in a flexible open peer-review model, which means that both the author and reviewer are aware of the identity of each other; however, every part involved in the peer review is able to request opting out (remaining anonymous) for numerous reasons which can be selected at submission of the manuscript for authors or at the moment of accepting to review an article by reviewers.\nThere is also an option to opt-in into a crowd peer review process with early publication, where the journal will present the submitted manuscript to its readers for an open review by members of the community. This will grant early access to the manuscript"
   },
   {
     "objectID": "index.html#community-engagement",
     "href": "index.html#community-engagement",
-    "title": "DOA-journal-occupational",
+    "title": "Exposure and Health in the Workplace",
     "section": "Community Engagement",
     "text": "Community Engagement\n\nTwitch\n\n\nSocial Media\n\n\nSlack\n\n\nForumFree"
+  },
+  {
+    "objectID": "R/OH_publications_analysis.html",
+    "href": "R/OH_publications_analysis.html",
+    "title": "Bibliographic analysis of occupational health journals",
+    "section": "",
+    "text": "Code\n# Packages used in this session. \n\nif (!require(\"pacman\", quietly = TRUE)) {\n  install.packages(\"pacman\")\n}\n\npacman::p_load(\n  tidyverse,\n  writexl,\n  readxl,\n  rvest,\n  rcrossref,\n  httr,\n  jsonlite,\n  ggrepel,\n  gt,\n  report\n)\n\n\nThe list of journals indexed for OSHLINE® was extracted on 23/04/2025 from the Canadian Centre for Occupational Health and Safety public website. This list contains journal names and their ISSN.\n\n\nCode\nOSHLINE_journals &lt;- read_html(paste0(inputfolder,\"/oshline_journal_list.html\"))\n\n\nA dataset was be generated from the html file by using functions from the rvest package to obtain a column with the journal name and the ISSN.\n\n\nCode\n# Extract and clean text from html file\njournal_text &lt;- OSHLINE_journals %&gt;%\n  html_elements(\"div.centralContainer p\") %&gt;%\n  html_text(trim = TRUE)\n\n# Drop first 3 non-journal entries\njournal_text &lt;- journal_text[-c(1:3)]\n\n# Split entries that contain multiple journals (multiple ISSNs in one line)\n# Use regex to split lines where ISSN pattern is followed by another ISSN\nsplit_lines &lt;- unlist(strsplit(journal_text, \"(?&lt;=\\\\d{4}-\\\\d{3}[\\\\dX])(?=\\\\S)\", perl = TRUE))\n\n# Clean whitespace and remove empties\nsplit_lines &lt;- str_trim(split_lines)\nsplit_lines &lt;- split_lines[split_lines != \"\"]\n\n# Identify correct ISSNs, filter valid lines\njournal_df &lt;- tibble(raw_entry = split_lines) %&gt;%\n  mutate(\n    issn = str_extract_all(raw_entry, \"\\\\d{4}-\\\\d{3}[\\\\dX]\"),\n    count = map_int(issn, length)\n  ) %&gt;%\n  unnest(issn) %&gt;%\n  mutate(journal_name = str_trim(str_remove(raw_entry, issn))) %&gt;%\n  select(journal_name, issn, raw_entry)\n\n# Save as excel file to resolve some remaining collapsed rows and errors\nwrite_xlsx(journal_df, path = file.path(tempfolder, \"OSHLINE_journals.xlsx\")) \n\n\nAfter manual inspection and checks for errors, two journals were removed as the ISSN was not registered for one (Facility Safety Management) and the correct ISSN could not be identified for a journal with no exact name matches (Health Promotion). The journal Environmental Carcinogenesis and Ecotoxicology Reviews (ISSN = 1059-0501) was removed as this was a duplicate of the Journal of Environmental Science and Health. Part C, Environmental Carcinogenesis & Ecotoxicology Reviews (ISSN = 1059-0501).\n\n\nCode\njournal_df &lt;- read_excel(path = file.path(psfolder,\"OSHLINE_journals.xlsx\"))\n\n\nThis resulted in a total of n = 216 journals."
+  },
+  {
+    "objectID": "R/OH_publications_analysis.html#analysis-of-open-access-journals",
+    "href": "R/OH_publications_analysis.html#analysis-of-open-access-journals",
+    "title": "Bibliographic analysis of occupational health journals",
+    "section": "Analysis of open access journals",
+    "text": "Analysis of open access journals\n\n\nCode\njournals_analysis &lt;- read_excel(path = file.path(psfolder,\"OSHLINE_journals_DOAJ_match.xlsx\")) %&gt;% \n  filter(doaj_match == TRUE)\n\n\nThe median journal article processing charges (APC) per article was:\n\n\nCode\njournals_analysis %&gt;% \n  summarize(\n    n = n(),\n    min = min(APC),\n    Q1 = quantile(APC,0.25),\n    median = median(APC),\n    Q3 = quantile(APC,0.75),\n    max = max(APC)\n  ) %&gt;% gt\n\n\n\n\n\n\n\n\n\nn\nmin\nQ1\nmedian\nQ3\nmax\n\n\n\n\n13\n0\n690\n1894\n2390\n2875\n\n\n\n\n\n\n\n\n\n\nCode\njournals_analysis %&gt;% \n  group_by(commercial_publisher) %&gt;% \n  summarize(\n    n = n(),\n    min = min(APC),\n    Q1 = quantile(APC,0.25),\n    median = median(APC),\n    Q3 = quantile(APC,0.75),\n    max = max(APC)\n  ) %&gt;% gt\n\n\n\n\n\n\n\n\n\ncommercial_publisher\nn\nmin\nQ1\nmedian\nQ3\nmax\n\n\n\n\nno\n8\n0\n251.25\n1424\n1975.5\n2300\n\n\nyes\n5\n690\n2390.00\n2490\n2790.0\n2875\n\n\n\n\n\n\n\n\n\n\nCode\nboxplot(APC ~ commercial_publisher,\n         data = journals_analysis\n                   )\n\n\n\n\n\n\n\n\n\n\n\nCode\nwil &lt;- wilcox.test(APC ~ commercial_publisher, \n                   data = journals_analysis, \n                   exact = FALSE\n                   )\nwil\n\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  APC by commercial_publisher\nW = 5, p-value = 0.03354\nalternative hypothesis: true location shift is not equal to 0\n\n\n\n\nCode\njournals_doaj %&gt;% group_by(doaj_match) %&gt;% \n  summarize(n = n()) %&gt;% \n  mutate(percentage = round((n/sum(n) * 100),1))\n\n\n# A tibble: 2 × 3\n  doaj_match     n percentage\n  &lt;lgl&gt;      &lt;int&gt;      &lt;dbl&gt;\n1 FALSE        189       93.6\n2 TRUE          13        6.4"
+  },
+  {
+    "objectID": "R/OH_publications_analysis.html#article-processing-charges",
+    "href": "R/OH_publications_analysis.html#article-processing-charges",
+    "title": "Abstract EPICOH",
+    "section": "Article Processing Charges",
+    "text": "Article Processing Charges\nWhenever APC charges were registered in a currency distinct to euros (EUR), values were converted to EUR by using international currency exchange rates from Google Finance on 23/04/2025.\nThe summary of journal article processing charges (APC) per article in euros (EUR) is shown in this table:\n\n\nCode\njournals_analysis %&gt;% \n  summarize(\n    n = n(),\n    min = min(APC),\n    Q1 = quantile(APC,0.25),\n    median = median(APC),\n    Q3 = quantile(APC,0.75),\n    max = max(APC)\n  ) %&gt;% \n  gt %&gt;% \n  cols_label(n = \"Number of Journals\") %&gt;% \n  cols_align(\n    align = \"center\",\n    columns = everything()\n    )\n\n\n\n\n\n\n\n\n\nNumber of Journals\nmin\nQ1\nmedian\nQ3\nmax\n\n\n\n\n13\n0\n690\n1894\n2390\n2875\n\n\n\n\n\n\n\n\nThe status of the publisher as a commercial or non-commercial publisher was classified by reviewing the publishers’ websites when available, or listings of companies on a stock exchange (if true, these were labelled as commercial).\nThe summary of APC in EUR according to commercial status of the publisher is as follows:\n\n\nCode\njournals_analysis %&gt;% \n  group_by(commercial_publisher) %&gt;% \n  summarize(\n    n = n(),\n    min = min(APC),\n    Q1 = quantile(APC,0.25),\n    median = median(APC),\n    Q3 = quantile(APC,0.75),\n    max = max(APC)\n  ) %&gt;% \n  gt %&gt;% \n  cols_label(\n    n = \"Number of Journals\", \n    commercial_publisher = \"Commercial Publisher\"\n    ) %&gt;% \n  cols_align(\n    align = \"center\",\n    columns = everything()\n    )\n\n\n\n\n\n\n\n\n\nCommercial Publisher\nNumber of Journals\nmin\nQ1\nmedian\nQ3\nmax\n\n\n\n\nno\n8\n0\n251.25\n1424\n1975.5\n2300\n\n\nyes\n5\n690\n2390.00\n2490\n2790.0\n2875\n\n\n\n\n\n\n\n\n\n\nCode\nboxplot(APC ~ commercial_publisher,\n        data = journals_analysis,\n        horizontal = TRUE,\n        ylab = \"Commercial publisher\",\n        xlab = \"Article processing charges (APC) in EUR\",\n        col = \"darkblue\"\n        )\n\n\n\n\n\n\n\n\n\nThe Mann-Withney U-test (Wilcoxon’s rank sum test) was applied to test the alternative hypothesis that the APC differed according to publisher commercial status classification:\n\n\nCode\nwil &lt;- wilcox.test(APC ~ commercial_publisher, \n                   data = journals_analysis, \n                   exact = FALSE\n                   )\nwil\n\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  APC by commercial_publisher\nW = 5, p-value = 0.03354\nalternative hypothesis: true location shift is not equal to 0"
+  },
+  {
+    "objectID": "R/OH_publications_analysis.html#diamond-open-access",
+    "href": "R/OH_publications_analysis.html#diamond-open-access",
+    "title": "Abstract EPICOH",
+    "section": "Diamond Open Access",
+    "text": "Diamond Open Access\nJournals were binary classified as diamond open access (DOA) and non-DOA based on meeting all six criteria stated in the DIAMAS classification. Only 2 journals met all criteria to be classified as DOA:\n\n\nCode\n# Show the names of the journals that had a DOAJ match\njournals_analysis %&gt;%\n  filter(diamond_OA == \"yes\") %&gt;%\n  distinct(id, journal_name) %&gt;% \n  gt %&gt;% \n  cols_label(id = \"ID\", journal_name = \"Journal\")\n\n\n\n\n\n\n\n\n\nID\nJournal\n\n\n\n\n64\nEmerging Infectious Diseases\n\n\n68\nEnvironmental Health Perspectives : EHP\n\n\n\n\n\n\n\n\nTherefore, the percentage of DOA journals out of the total set of publications was 1%."
+  },
+  {
+    "objectID": "R/OH_publications_analysis.html#year-of-conversion-to-oa",
+    "href": "R/OH_publications_analysis.html#year-of-conversion-to-oa",
+    "title": "Abstract EPICOH",
+    "section": "Year of conversion to OA",
+    "text": "Year of conversion to OA\nThe year of registration of journals as fully open access (OA) is summarized in the following table:\n\n\nCode\njournals_analysis %&gt;% \n  summarize(\n    n = n(),\n    min = min(OA_since),\n    Q1 = quantile(OA_since,0.25),\n    median = median(OA_since),\n    Q3 = quantile(OA_since,0.75),\n    max = max(OA_since)\n  ) %&gt;% \n  gt %&gt;% \n  cols_label(n = \"Number of Journals\") %&gt;% \n  cols_align(\n    align = \"center\",\n    columns = everything()\n    )\n\n\n\n\n\n\n\n\n\nNumber of Journals\nmin\nQ1\nmedian\nQ3\nmax\n\n\n\n\n13\n1972\n2000\n2011\n2018\n2023\n\n\n\n\n\n\n\n\nThe onset of publication as fully OA, according to journal commercial status is shown in the following plot:\n\n\nCode\njournals_analysis %&gt;%\n  ggplot(aes(x = OA_since, y = 0, color = commercial_publisher)) +\n  facet_grid(rows = vars(commercial_publisher), switch = \"y\") +\n  geom_point(size = 4, alpha = 1/5) +\n  geom_text(\n    aes(label = MEDLINE_abbreviation),\n    vjust = -1,       # slightly above the points\n    hjust = 0.35,          # align to the left of each label\n    angle = 90,         # rotate the text\n    size = 3.5\n  ) +\n  scale_color_manual(values = c(\"yes\" = \"tomato\", \"no\" = \"steelblue\")) +\n  theme_minimal() +\n  theme(\n    axis.title = element_text(size = 13),\n    axis.text.y = element_blank(),\n    axis.ticks.y = element_blank(),\n    panel.grid.major.y = element_blank(),\n    panel.grid.minor.y = element_blank(),\n    strip.text = element_text(size = 12, face = \"bold\"),\n    legend.position = \"none\"\n  ) +\n  labs(\n    title = \"Timeline of Open Access (OA) journal status onset\",\n    y = \"Commercial Publisher\",\n    x = \"Year\"\n  )"
+  },
+  {
+    "objectID": "R/OH_publications_analysis.html#author-copyright",
+    "href": "R/OH_publications_analysis.html#author-copyright",
+    "title": "Abstract EPICOH",
+    "section": "Author copyright",
+    "text": "Author copyright\nOut of the 13 publications included for analysis, n = 8 (61.5%) allowed authors to retain the copyright of their works."
+  },
+  {
+    "objectID": "R/OH_publications_analysis.html#licensing",
+    "href": "R/OH_publications_analysis.html#licensing",
+    "title": "Abstract EPICOH",
+    "section": "Licensing",
+    "text": "Licensing\nThe types of licenses allowed in the journals indexed in DOAJ were the following:\n\n\nCode\njournals_analysis %&gt;% \n  mutate(N = length(id)) %&gt;% \n  separate_rows(License, sep = \", \") %&gt;% \n  group_by(License) %&gt;% \n  summarize(n = n(), N = first(N)) %&gt;%\n  arrange(desc(n)) %&gt;% \n  mutate(Percentage = round((n/N * 100),1)) %&gt;% \n  gt %&gt;% \n  cols_hide(N)\n\n\n\n\n\n\n\n\n\nLicense\nn\nPercentage\n\n\n\n\nCC BY\n11\n84.6\n\n\nCC0\n5\n38.5\n\n\nCC BY-NC-ND\n3\n23.1\n\n\nCC BY-NC\n2\n15.4\n\n\nCC BY-NC-SA\n1\n7.7"
+  },
+  {
+    "objectID": "abstract_EPICOH.html",
+    "href": "abstract_EPICOH.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   }
 ]

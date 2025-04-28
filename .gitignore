@@ -4,3 +4,7 @@
 .Ruserdata
 
 /.quarto/
+
+# Ulrichsweb dataset, which is protected by copyright and cannot be shared. 
+data/raw/2025_04_25_Ulrichsweb_oshline_journals.csv
+data/temp/journals_DOAJ.xlsx

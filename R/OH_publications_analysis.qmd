@@ -6,12 +6,24 @@ author:
     affiliation: Institute for Risk Assessment Sciences, Utrecht University, Utrecht, The Netherlands
     orcid: 0000-0002-0718-467X
     email: j.mancillagalindo@uu.nl
+  - name: Antonio d’Errico
+    affiliation: Institute for Risk Assessment Sciences, Utrecht University, Utrecht, The Netherlands
+    orcid: 0000-0001-9805-600X
+    email: a.derrico2@uu.nl
+  - name: Sewon Lee
+    affiliation: UCD School of Public Health, University College Dublin, Dublin, Ireland
+    orcid: 0000-0003-0618-1490
+    email: sewon.lee@ucd.ie   
+  - name: Max J. Oosterwegel
+    affiliation: Institute for Risk Assessment Sciences, Utrecht University, Utrecht, The Netherlands
+    orcid: 0000-0003-3991-2632
+    email: m.j.oosterwegel@uu.nl
 date: today
 abstract: |
-  <b>Objective:</b> Open access (OA) publishing allows research to be available to readers at no cost. Under different OA models, costs are transferred to authors, funders, or institutions. This study aimed to evaluate occupational health and safety journals’ policies and indexing for OA.  
-  <b>Material and Methods:</b> Journals indexed in the OSHLINE database (n = 216) were identified and their bibliographic characteristics and were obtained from the Crossref, ISSN, and Ulrichsweb databases. Non-academic (n = 9), discontinued (n = 4), and unverified (n = 1) publications were excluded. Remaining journals were searched for indexing in the Directory of Open Access Journals (DOAJ). Data on OA publishing start year, article processing charges (APC), author copyright retention, and available licenses were retrieved from DOAJ. Journals were classified as diamond or non-diamond OA as per the DIAMAS criteria (persistent identification, scholarly journal, OA with licenses, no fees, open to all authors, and community-owned). Publishers were labelled as commercial and non-commercial by reviewing publishers’ websites and stock exchange listings.   
-  <b>Results:</b> Out of the 202 journals analyzed, only 13 (6.4%) were indexed in DOAJ. Of these, only 2 were diamond OA journals. The median APC was 1894 EUR (IQR: 690–2390, range: 0–2875). Journals owned by commercial publishers charged higher APC than non-commercial publishers (median 1424 vs 2490 EUR, p = 0.03). Eight (61.5%) allowed authors to retain the copyright of their works. CC-BY licenses were commonly allowed (n = 11, 84.6%), followed by CC0 (n = 5, 38.5%), and CC BY-NC-ND (n = 3, 23.1%). 
-  <b>Conclusion:</b> Few occupational health and safety journals indexed in OSHLINE are fully OA, with only 1% diamond OA. Journals owned by commercial publishers charge higher fees to authors, institutions, and funders, on average. Existing journals could evaluate transitioning to non-commercial or diamond OA, while new diamond OA journal initiatives should be encouraged.  
+  <b>Objective:</b> Open access (OA) publishing allows research to be freely available to readers, whilst costs are usually transferred to authors, funders, or institutions. This study explores OA policies and indexing among occupational health journals.
+  <b>Material and Methods:</b> Journals indexed in the OSHLINE database (n = 216) were identified and their bibliographic characteristics were obtained from the Crossref, ISSN, and Ulrichsweb databases. Non-academic (n = 9), discontinued (n = 4), and unverified (n = 1) publications were excluded. Remaining journals were searched for indexing in the Directory of Open Access Journals (DOAJ). Data on OA publishing start year, article processing charges (APC), author copyright retention, and creative commons (CC) copyright licenses were retrieved from DOAJ. The DIAMAS criteria (persistent identification, scholarly journal, OA with licenses, no fees, open to all authors, and community-owned) were used to define diamond OA journals when all criteria were met. Publishers were labelled as commercial and non-commercial by reviewing publishers’ websites and stock exchange listings.   
+  <b>Results:</b> Out of the 202 journals analyzed, 13 (6.4%) were indexed in DOAJ and only 2 (1%) were diamond OA journals. The median APC in journals indexed in DOAJ was 1894 EUR (IQR: 690–2390, range: 0–2875). Journals owned by commercial publishers charged higher APC than non-commercial publishers (median 2490 vs 1424 EUR, p = 0.03). Eight (61.5%) allowed authors to retain copyright of their works. CC-BY licenses were commonly allowed (n = 11, 84.6%), followed by CC0 (n = 5, 38.5%), and CC BY-NC-ND (n = 3, 23.1%). 
+  <b>Conclusion:</b> Few occupational health and safety journals indexed in OSHLINE are fully OA, with only 1% diamond OA. Journals owned by commercial publishers charge higher fees to authors, institutions, or funders. Existing journals could evaluate transitioning to non-commercial or diamond OA, while new diamond OA journal initiatives should be encouraged.  
 keywords: ["Occupational Health", "Open Access Publishing", "Bibliometrics", "Scholarly Communication", "Publishing"]
 execute: 
   echo: false

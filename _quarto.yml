@@ -9,7 +9,6 @@ website:
         text: Home
       - about.qmd
       - R/OH_publications_analysis.qmd
-      - abstract_EPICOH.qmd
 
 format:
   html:

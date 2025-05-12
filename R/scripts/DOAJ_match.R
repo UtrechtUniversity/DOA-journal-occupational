@@ -5,12 +5,12 @@
 ## ORCiD: https://orcid.org/0000-0002-0718-467X
 
 ## Purpose: This script determines whether journals listed in the
-## `journals_ulrichsweb_long` dataframe are indexed in the Directory
+## `ulrichsweb` dataframe are indexed in the Directory
 ## of Open Access Journals (DOAJ). It defines a function `get_doaj_match`
 ## that takes an ISSN as input and queries the DOAJ API to check for
 ## a matching journal. The function returns `TRUE` if a journal with
 ## the given ISSN is found in the DOAJ and `FALSE` otherwise. The
-## script then iterates through each row of the `journals_ulrichsweb_long`
+## script then iterates through each row of the `ulrichsweb`
 ## and applies the `get_doaj_match` function to the `issn` column to create
 ## a new logical column named `doaj_match`. Finally, the resulting
 ## dataframe `journals_doaj` is saved as an Excel file ("journals_DOAJ.xlsx")
@@ -36,10 +36,9 @@ get_doaj_match <- function(issn) {
   return(FALSE)
 }
 
-journals_doaj <- journals_ulrichsweb_long %>%
-  select(-issn_print_exact_match) %>% 
+journals_doaj <- ulrichsweb %>% 
   rowwise() %>%
   mutate(doaj_match = get_doaj_match(issn)) %>%
   ungroup()
 
-write_xlsx(journals_doaj, path = file.path(tempfolder, "journals_DOAJ.xlsx")) 
+write_xlsx(journals_doaj, path = file.path(psfolder, "journals_DOAJ.xlsx")) 
